@@ -1,0 +1,16 @@
+#!/bin/bash
+DATE=`date`
+ROOT=/home/www
+LOG="$ROOT/log/run-forever.log"
+PID=""
+
+sites="
+dev.pointlook.com
+"
+
+echo "Starting forever check..." > $LOG
+for dirs in $sites; do
+  PID=$(ps -ef |grep $app | grep forever | awk '{ print $2 }')
+  app="$ROOT/$dirs"
+  ( (echo "checking $app...") && [ "$PID" == "" ] && [ -d "$app" ] && ( cd $app; echo "runme $app"; ./runme )) >> $LOG  &
+done

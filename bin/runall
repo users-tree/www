@@ -1,0 +1,8 @@
+ROOT=/home/www
+LOG=$HOME/log/runall.log
+DATE=$(date)
+
+echo "$DATE" > $LOG
+( [ -x $ROOT/bin/runnode ] && ( $ROOT/bin/runnode )) 2>&1 >> $LOG
+( [ -x $ROOT/bin/gitpull ] && ( $ROOT/bin/gitpull )) 2>&1 >> $LOG
+

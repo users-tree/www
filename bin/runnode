@@ -1,0 +1,16 @@
+#!/bin/bash
+DATE=`date`
+ROOT=/home/www
+LOG="$ROOT/log/run-node.log"
+PID=""
+
+sites="
+dev.treetoweb.com
+"
+
+echo "$DATE : Starting run node check..." > $LOG
+for dirs in $sites; do
+  app="$ROOT/$dirs"
+  PID=$(ps -ef |grep $app | grep -v grep |  grep node | awk '{ print $2 }')
+  ( (echo "$DATE : checking $app...") && [ "$PID" == "" ] && [ -d "$app" ] && ( cd $app; echo "runme $app"; ./runme )) >> $LOG  &
+done
