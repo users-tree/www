@@ -7,7 +7,7 @@ PID=""
 skipsites=""
 
 sites="
-devtreetoweb.
+dev.treetoweb.com
 "
 
 echo "Starting gitpull" > $LOG
