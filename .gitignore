@@ -7,7 +7,7 @@
 .local
 .meteor/*
 .meteorite/*
-.meteorsession/*
+.meteorsession
 .nave/*
 .node-gyp/*
 .npm*/*
